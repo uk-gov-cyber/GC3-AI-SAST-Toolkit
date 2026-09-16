@@ -117,7 +117,7 @@ Your tasks are to:
 2. Collect repository attribution and routing evidence.
 3. Exclude repositories that are out of scope.
 4. Identify repositories that merit deeper SAST.
-5. Rank the top candidates for the next prompt (typical shortlist size: 25).
+5. Rank the top candidates for the next prompt (risk-based shortlist).
 6. For each selected repository, provide enough evidence and file pointers to start the next prompt efficiently.
 7. Produce a structured handoff.
 8. Produce a stop/continue recommendation for the next phase.
