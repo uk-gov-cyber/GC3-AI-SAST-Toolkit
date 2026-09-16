@@ -38,6 +38,7 @@ Every report must include an **Evidence Classification** table using this exact 
 | Impact severity if exploitable | `<low/medium/high/critical or department scale>` |
 | Evidence confidence | `<low/medium/high/confirmed>` |
 | Lifecycle state | `<canonical state>` |
+| Human validation status | (A string exactly as: "(Enter human validation status here)") |
 
 Every report must clearly separate:
 
