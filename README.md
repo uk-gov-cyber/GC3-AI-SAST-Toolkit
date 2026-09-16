@@ -32,7 +32,7 @@ There is a single set of agent instructions at the toolkit root. The reporting b
 
 ## Where the code being scanned lives
 
-The target code is a **sanitised local clone inside the hardened sandbox** — not in a prompt, not on GitHub for the purposes of scanning, and not inside this toolkit repository.
+The target code is a sanitised local clone inside the hardened sandbox.
 
 Typical layout:
 
@@ -43,7 +43,7 @@ Typical layout:
     └── <target-repo>/          # sanitised clone; .git/ removed, secrets and PII redacted
 ```
 
-Start the coding agent from `gc3-ai-sast-toolkit/` so `CLAUDE.md` / `AGENTS.md` load automatically, then direct it at the scan copy. The agent reads files from the local sandbox filesystem using its own tools; source code is never pasted into prompts. GitHub, if used at all, is only a source for the initial clone — scan outputs, findings, and reports must never be pushed back to GitHub or committed to this toolkit repository.
+Start the coding agent from `gc3-ai-sast-toolkit/` so `CLAUDE.md` / `AGENTS.md` load automatically, then direct it at the scan copy. 
 
 ## Participant journey
 
@@ -58,10 +58,6 @@ Start the coding agent from `gc3-ai-sast-toolkit/` so `CLAUDE.md` / `AGENTS.md` 
 ## Documentation only
 
 This toolkit is documentation. Do not commit vulnerability reports, candidate findings, scan outputs, prompt transcripts, exploit evidence, source code, secrets, personal data, or departmental vulnerability data to this repository. Findings must be handled through the agreed departmental reporting route.
-
-## Complementary controls
-
-AI SAST complements — it does not replace — DAST, software composition analysis, secret scanning, manual code review, and threat modelling. Departments should continue to run the controls they already use and treat AI SAST as an additional evidence source.
 
 ## Cost indication
 
