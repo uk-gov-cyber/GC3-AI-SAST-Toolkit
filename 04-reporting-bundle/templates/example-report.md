@@ -23,7 +23,7 @@ Refer to it when filling out a real `vulnerability-report.md`.
 | Prompt-pack version    | `gc3-ai-sast v1.0 — prompt 02 (full SAST)`         |
 | Status                 | `Submitted`                                        |
 | Tracking ID            | _(left blank)_                                     |
-| Human validation status          | (Enter human validation status here)                                   |
+| Human validation status          | _(Enter human validation status here)_                                   |
 
 ## 2. Summary
 
