@@ -63,6 +63,15 @@ This toolkit is documentation. Do not commit vulnerability reports, candidate fi
 
 AI SAST complements — it does not replace — DAST, software composition analysis, secret scanning, manual code review, and threat modelling. Departments should continue to run the controls they already use and treat AI SAST as an additional evidence source.
 
+## Cost indication
+
+At the time of writing (mid 2026), the table below is an indication of cost. 
+
+| Repo size | Small | Med | Large |
+|---|---| ---| ---|
+| approx. lines of code | 17,800 | 300,000 | 1,500,000 |
+| Cost of AI scan (£) | 2 | 25 | 123 |
+
 ## Style
 
 British English. ASCII only in report bodies.
