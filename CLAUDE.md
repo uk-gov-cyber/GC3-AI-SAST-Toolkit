@@ -15,21 +15,20 @@ Your output is candidate analysis. It is not a final verdict. The reviewer is re
 
 ## Workflow
 
-1. Read `00-introduction/overview.md` for context on aims and principles.
-2. Confirm the reviewer has completed the pre-requisites in `01-pre-requisites/`.
-3. Follow the staged prompts in `03-prompt-guidance/staged/` in order. If the reviewer has directed you to a one-shot run, use `03-prompt-guidance/one-shot-minimum-sast-prompt.md` instead.
-4. For every code-level claim, cite `path/to/file.ext:NN-MM`.
-5. For every candidate finding, produce source, sink, path, guards or missing guards, reachability reasoning, feasible attacker outcome, and a negative-control argument that tries to refute the finding.
-6. Use the evidence labels defined in `03-prompt-guidance/staged/00-run-control-and-evidence-model.md` and preserve them in every artefact.
-7. Do not overstate impact. Do not claim production exploitability, live compromise, or deployed reachability unless the reviewer has recorded authorised runtime or deployed evidence.
-8. Preserve reviewed-but-not-promoted candidates in a no-finding / not-promoted coverage record — never silently drop them.
+1. Assume the reviewer has completed the departmental pre-requisites (scope, model access, sandbox, environment, and repository preparation) described in the AI SAST Toolkit written guidance. Do not re-derive or restate that guidance.
+2. Follow the staged prompts in `1-prompts/staged/` in order. If the reviewer has directed you to a one-shot run, use `1-prompts/one-shot-minimum-sast-prompt.md` instead.
+3. For every code-level claim, cite `path/to/file.ext:NN-MM`.
+4. For every candidate finding, produce source, sink, path, guards or missing guards, reachability reasoning, feasible attacker outcome, and a negative-control argument that tries to refute the finding.
+5. Use the evidence labels defined in `1-prompts/staged/00-run-control-and-evidence-model.md` and preserve them in every artefact.
+6. Do not overstate impact. Do not claim production exploitability, live compromise, or deployed reachability unless the reviewer has recorded authorised runtime or deployed evidence.
+7. Preserve reviewed-but-not-promoted candidates in a no-finding / not-promoted coverage record — never silently drop them.
 
 ## Reporting
 
 When asked to report, escalate, or file a vulnerability finding:
 
-1. Read `04-reporting-bundle/templates/agent-filling-guide.md` first. It is the procedure.
-2. Copy `04-reporting-bundle/templates/vulnerability-report.md` to a new file in an approved local or departmental reporting location. Use the report-ID scheme the department has set.
+1. Read `2-reporting-bundle/templates/agent-filling-guide.md` first. It is the procedure.
+2. Copy `2-reporting-bundle/templates/vulnerability-report.md` to a new file in an approved local or departmental reporting location. Use the report-ID scheme the department has set.
 3. Fill every section per the guide.
 4. Run the confirmation prompts, including the mandatory negative-control prompt, before changing `Status` from `Draft` to `Submitted`.
 5. Record the discovery tool / model / version and the confirmation tool / model / version honestly. If the same model both discovered and confirmed the finding, say so — do not pretend it was independently corroborated.

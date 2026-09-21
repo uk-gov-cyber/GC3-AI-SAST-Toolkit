@@ -1,38 +1,30 @@
 # GC3 AI SAST Toolkit
 
-Guidance for government departments running AI-assisted static application security testing (SAST) against their own source code.
-
-The toolkit provides a repeatable workflow for using a coding agent (Claude Code, Codex, or an equivalent) to identify, validate, and report vulnerabilities in departmental code. It does not provide the model itself. Departments are responsible for their own commercial agreement with an AI provider and for holding the associated API credentials.
+The toolkit provides a repeatable workflow for using a coding agent (Claude Code, Codex, or an equivalent) to identify, validate, and report vulnerabilities in source code.
 
 ## Contents
 
 ```text
-00-introduction/          What AI SAST is, aims, and core principles.
-01-pre-requisites/        Model access, sandbox hardening, network, monitoring,
-                          repository selection, and repository preparation.
-02-methodology/           Mapping, scanning, validation, and reporting principles.
-03-prompt-guidance/       Prompting principles, staged prompts, and one-shot fallback.
-04-reporting-bundle/      Reporting standards, review checklist, and templates.
-CLAUDE.md / AGENTS.md     Agent instructions loaded automatically by coding agents.
+1-prompts/             Prompting principles, staged prompts, and one-shot fallback.
+2-reporting-bundle/    Reporting standards, review checklist, and templates.
+CLAUDE.md / AGENTS.md  Agent instructions loaded automatically by coding agents.
 ```
 
 ## How agents use this toolkit
 
-Departments should run the coding agent from the root of this toolkit. `CLAUDE.md` (for Claude Code) and `AGENTS.md` (for Codex and other agents that honour it) are loaded automatically and instruct the agent to:
+Run the coding agent from the root of this toolkit. `CLAUDE.md` (for Claude Code) and `AGENTS.md` (for Codex and other agents that honour it) are loaded automatically and instruct the agent to:
 
 - work only on the approved, sanitised local repository copy;
-- follow the staged prompts in `03-prompt-guidance/`;
+- follow the staged prompts in `1-prompts/`;
 - cite every code claim as `path/to/file.ext:NN-MM`;
 - separate source-confirmed behaviour from runtime-validated behaviour;
 - run a mandatory negative-control check before promoting any finding;
-- write reports into an approved local location using the templates in `04-reporting-bundle/templates/`;
+- write reports into an approved local location using the templates in `2-reporting-bundle/templates/`;
 - never upload findings, prompts, secrets, personal data, or source excerpts to this repository or to any other unapproved location.
 
-There is a single set of agent instructions at the toolkit root. The reporting bundle deliberately does not have its own `CLAUDE.md` / `AGENTS.md` — the root files cover the entire workflow, including report filing.
+There is a single set of agent instructions at the toolkit root.
 
-## Where the code being scanned lives
-
-The target code is a sanitised local clone inside the hardened sandbox.
+## Repo setup
 
 Typical layout:
 
@@ -43,30 +35,15 @@ Typical layout:
     └── <target-repo>/          # sanitised clone; .git/ removed, secrets and PII redacted
 ```
 
-Start the coding agent from `gc3-ai-sast-toolkit/` so `CLAUDE.md` / `AGENTS.md` load automatically, then direct it at the scan copy. 
+Start the AI SAST agent from `gc3-ai-sast-toolkit/` so `CLAUDE.md` / `AGENTS.md` load automatically, then direct it at the scan copy.
 
-## Participant journey
+## Agent journey
 
-1. Read `00-introduction/overview.md`.
-2. Complete every item in `01-pre-requisites/` before running any prompt.
-3. Read `02-methodology/README.md`.
-4. Use the staged prompts in `03-prompt-guidance/staged/` in order. If you cannot run the full staged workflow, use the one-shot fallback prompt.
-5. Validate every candidate finding using the confirmation and negative-control steps in `02-methodology/validation-and-triage.md`.
-6. Report validated findings using `04-reporting-bundle/`.
-7. Preserve a no-finding / not-promoted coverage record so future reviewers know what was reviewed and why candidates were not promoted.
-
-## Documentation only
-
-This toolkit is documentation. Do not commit vulnerability reports, candidate findings, scan outputs, prompt transcripts, exploit evidence, source code, secrets, personal data, or departmental vulnerability data to this repository. Findings must be handled through the agreed departmental reporting route.
-
-## Cost indication
-
-At the time of writing (mid 2026), the table below is an indication of cost. 
-
-| Repo size | Small | Med | Large |
-|---|---| ---| ---|
-| approx. lines of code | 17,800 | 300,000 | 1,500,000 |
-| Cost of AI scan (£) | 2 | 25 | 123 |
+1. Load agent instructions from `CLAUDE.md` / `AGENTS.md` at the toolkit root.
+2. Use the staged prompts in `1-prompts/staged/` in order. If the reviewer directs a one-shot run, use `1-prompts/one-shot-minimum-sast-prompt.md`.
+3. Validate every candidate finding using the confirmation and negative-control steps required by the prompt pack.
+4. Report validated findings using `2-reporting-bundle/`.
+5. Preserve a no-finding / not-promoted coverage record so future reviewers know what was reviewed and why candidates were not promoted.
 
 ## Style
 
